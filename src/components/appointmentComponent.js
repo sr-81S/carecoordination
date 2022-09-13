@@ -14,9 +14,11 @@ function Appointment(props) {
   return (
     <>
       <AppointmentContainer>
-        {props.p1},{props.p2},{props.p3},{props.p4} <br />
+        {props.p1} - Time: {props.Time}: 00<br />
+        {props.p2} - Time: {props.Time}: 00<br />
+        {props.p3} - Time: {props.Time}: 00<br />
+        {props.p4} - Time: {props.Time}: 00<br />
         Task - {props.Task} <br />
-        Time: {props.Time}: 00
       </AppointmentContainer>
       <div style={{ backgroundColor: "#000080", marginBottom: "10px" }}>
         <RescheduleButton onClick={() => setOpenModal(true)}>

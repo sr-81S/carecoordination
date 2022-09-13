@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import moment from "moment";
 import { useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
-
+import { useNavigate } from "react-router-dom";
 import CalenderHeader from "../components/calenderHeader";
 import DateComponent from "../components/dateContainer";
 import * as actionCreators from "../store/actions/index";
@@ -22,7 +22,7 @@ import { useParams } from "react-router-dom";
 
 function Calendar() {
   const dispatch = useDispatch();
-
+  const navigate = useNavigate()
   const { year, month } = useParams();
 
   const [selectedYear, setSelectedYear] = useState(2022);
@@ -49,16 +49,20 @@ function Calendar() {
 
     setSelectedYear(parseInt(defaultYear));
     setSelectedMonth(parseInt(defaultMonth) - 1);
+    console.log(selectedYear);
+    console.log(selectedMonth);
   }, [year, month]);
 
   const onYearSelect = (year) => {
     const { value } = year;
     setSelectedYear(parseInt(value));
+    navigate(`/year/${value}/month/${selectedMonth+1}`)
   };
 
   const onMonthSelect = (month) => {
     const { value } = month;
     setSelectedMonth(parseInt(value - 1));
+    navigate(`/year/${selectedYear}/month/${selectedMonth+1}`)
   };
 
   const openModal = () => {
